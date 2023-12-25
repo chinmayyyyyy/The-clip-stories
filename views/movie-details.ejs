@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="css/details.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;900&family=Lora&family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <%- include('navBar'); -%>    
+    <div class="container">
+        <div class="movie-details">
+            <div class="movie-poster">
+                <img src="https://image.tmdb.org/t/p/w500<%= movieDetails.poster_path %>" alt="<%= movieDetails.title %> Poster">
+            </div>
+            <div class="movie-info">
+                <h1><%= movieDetails.title %></h1>
+                <div class="overview">
+                    <h2>Movie Overview:</h2>
+                    <p><%= movieDetails.overview %></p>
+                </div>
+                <div class="details">
+                    <div class="detail">
+                        <h3>Release Date:</h3>
+                        <p><%= movieDetails.release_date %></p>
+                    </div>
+                    <div class="detail">
+                        <h3>Language:</h3>
+                        <p><%= movieDetails.original_language %></p>
+                    </div>
+                    <div class="detail">
+                        <h3>Budget:</h3>
+                        <p><%= movieDetails.budget %> Dollars</p>
+                    </div>
+                    <div class="detail">
+                        <h3>Runtime:</h3>
+                        <p><%= movieDetails.runtime %> Minutes</p>
+                    </div>
+                    <div class="detail">
+                        <h3>Revenue:</h3>
+                        <p><%= movieDetails.revenue %> Dollars</p>
+                    </div>
+                </div>
+                <div class="genre">
+                    <h4>Genres:</h4>
+                    <!-- Add genres dynamically based on your data -->
+                </div>
+                <div class="average-rating">
+                    <img src="images/Christmas-stars-clipart-removebg-preview.png" alt="">
+                    <h4><%= movieDetails.vote_average %></h4>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>

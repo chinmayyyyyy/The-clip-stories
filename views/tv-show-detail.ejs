@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Show Details</title>
+    <link rel="stylesheet" href="css/details.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;900&family=Lora&family=Playfair+Display&display=swap" rel="stylesheet">
+    <!-- Add your other CSS and head content here -->
+    <style>
+        /* Add your custom styles here */
+        body {
+            background-color: #053B50;
+            font-family: 'Lora', serif;
+            color: #EEEEEE;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #eeee;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie-details {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .movie-poster img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .movie-info {
+            color: #053B50;
+        }
+
+        h1 {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #176B87;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .detail {
+            flex: 1;
+            margin: 10px 0;
+        }
+
+        .seasons {
+            margin-top: 20px;
+        }
+
+        .season {
+            border: 1px solid #64CCC5;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .season h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #053B50;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include your navigation bar or header -->
+    <%- include('navBar'); -%>  
+    <div class="container">
+        <div class="movie-details">
+            <!-- Movie poster -->
+            <div class="movie-poster">
+                <img src="https://image.tmdb.org/t/p/w500<%= tvDetails.poster_path %>" alt="<%= tvDetails.title %> Poster">
+            </div>
+            <!-- Movie info -->
+            <div class="movie-info">
+                <h1><%= tvDetails.title %></h1>
+                <!-- Movie overview -->
+                <div class="overview">
+                    <h2>TV SHOW OVERVIEW:</h2>
+                    <p><%= tvDetails.overview %></p>
+                </div>
+                <!-- Release date and other details -->
+                <div class="details">
+                    <!-- Release Date -->
+                    <div class="detail">
+                        <h3>Release Date:</h3>
+                        <p><%= tvDetails.first_air_date %></p>
+                    </div>
+                    <!-- Language -->
+                    <div class="detail">
+                        <h3>Language:</h3>
+                        <p><%= tvDetails.original_language %></p>
+                    </div>
+                    <!-- Number of Seasons -->
+                    <div class="detail">
+                        <h3>Number of Seasons:</h3>
+                        <p><%= tvDetails.number_of_seasons %></p>
+                    </div>
+                    <!-- Total Episodes -->
+                    <div class="detail">
+                        <h3>Total Episodes:</h3>
+                        <p><%= tvDetails.number_of_episodes %></p>
+                    </div>
+                    <!-- Genres -->
+                    <div class="detail">
+                        <h3>Genres:</h3>
+                        <% tvDetails.genres.forEach(function(genre) { %>
+                            <p><%= genre.name %></p>
+                        <% }); %>
+                    </div>
+                    <!-- Average Rating -->
+                    <div class="detail">
+                        <h3>Average Rating:</h3>
+                        <div class="average-rating">
+                            <img src="images/Christmas-stars-clipart-removebg-preview.png" alt="">
+                            <h4><%= tvDetails.vote_average %></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Seasons -->
+        <div class="seasons">
+            <h2>Seasons:</h2>
+            <% tvDetails.seasons.forEach(function(season) { %>
+            <div class="season">
+                <h3>Season <%= season.season_number %></h3>
+                <p><%= season.overview %></p>
+            </div>
+            <% }); %>
+        </div>
+        <hr>
+    </div>
+    <!-- Include your footer -->
+    <%- include('footer'); -%> 
+</body>
+</html>

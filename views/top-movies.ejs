@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 100 Movies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/querySearch.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;900&family=Lora&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/movie-results.css"> <!-- Reusing the movie-results.css -->
+</head>
+<body>
+    <%- include('navBar'); -%>    
+    <div class="container">
+        <h1 style="text-align: center; color: aqua;">TOP 100 MOVIES!</h1>
+        <table>
+            <% top100Movies.forEach(function(movie) { %>
+                <tr>
+                    <td class="logo-cell">
+                        <img class="movie-logo" src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="<%= movie.title %> Poster">
+                    </td> 
+                    <td>
+                        <h2 class="movie-title"><%= movie.title %></h2>
+                        <p class="movie-overview"><%= movie.overview %></p>
+                    </td>
+                    <td> 
+                        <button class="m_id" id="<%= movie.id %>">View More</button>
+                    </td>
+                </tr>
+            <% }); %>
+        </table>
+    </div>
+    <script src="app.js"></script>
+    <script src="script/queryResult.js"></script>
+</body>
+</html>
